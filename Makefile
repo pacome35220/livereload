@@ -7,16 +7,21 @@
 
 SRC_DIR		=	src/
 
+LIB_DIR		=	lib/
+
 INC_DIR		=	include/
 
 SRC		=	$(SRC_DIR)main.c	\
-			$(SRC_DIR)my_str_to_word_array.c
+			$(SRC_DIR)usage.c	\
+			$(SRC_DIR)parse_options.c	\
+			$(LIB_DIR)my_str_to_word_array.c
 
 OBJ		=	$(SRC:.c=.o)
 
 CFLAGS		+=	-W -Wall -Wextra	\
 			-I $(INC_DIR)	\
-			-Og
+			-Og	\
+			-g
 
 NAME		=	c_livereload
 
