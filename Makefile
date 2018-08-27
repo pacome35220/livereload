@@ -9,7 +9,8 @@ SRC_DIR		=	src/
 
 INC_DIR		=	include/
 
-SRC		=	$(SRC_DIR)main.c
+SRC		=	$(SRC_DIR)main.c	\
+			$(SRC_DIR)my_str_to_word_array.c
 
 OBJ		=	$(SRC:.c=.o)
 
