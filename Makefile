@@ -17,7 +17,7 @@ CFLAGS		+=	-W -Wall -Wextra	\
 			-I $(INC_DIR)	\
 			-Og
 
-NAME		=	c_live_reload
+NAME		=	c_livereload
 
 all:		$(NAME)
 

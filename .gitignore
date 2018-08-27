@@ -9,4 +9,4 @@
 *.out
 vgcore.*
 node_modules
-c_live_reload
+c_livereload
