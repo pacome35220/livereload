@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_str_to_word_array
-** File description:
-** my_str_to_word_array
-*/
-
 #include <stdlib.h>
 #include <string.h>
 

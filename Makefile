@@ -1,10 +1,3 @@
-##
-## EPITECH PROJECT, 2018
-## Makefile
-## File description:
-## Makefile
-##
-
 SRC_DIR		=	src/
 
 LIB_DIR		=	lib/
