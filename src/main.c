@@ -20,11 +20,5 @@ int main(int argc, char **argv)
 
 	if (parse_options(argc, argv, &flags) == -1)
 		return usage(argv);
-	printf("compile_command: %s\n", flags.compile_command);
-	printf("binary_name: %s\n", flags.binary_name);
-	printf("source_path:\n");
-	for (int i = 0; flags.source_path[i] != NULL; i++)
-		printf("- %s\n", flags.source_path[i]);
-	puts("");
 	return EXIT_SUCCESS;
 }
