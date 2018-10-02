@@ -25,8 +25,7 @@ int main(int argc, char **argv)
 		return usage(argv);
 	inotify_fd = inotify_init();
 	assert(inotify_fd != -1);
-	for (size_t i = 0; flags.source_path[i] != NULL; i++)
-		add_watched_file(inotify_fd, flags.source_path[i]);
+	add_watched_files(inotify_fd, flags.source_path);
 	run_livereload(inotify_fd, &flags);
 	return EXIT_SUCCESS;
 }

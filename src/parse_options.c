@@ -35,5 +35,5 @@ int parse_options(int argc, char **argv, struct flag_option *flags)
 		}
 	}
 	return flags->source_path &&
-		flags->binary_name && flags->compile_command;
+		flags->binary_name && flags->compile_command ? 0 : -1;
 }
