@@ -9,7 +9,7 @@ SRC		=	$(SRC_DIR)main.c	\
 			$(SRC_DIR)parse_options.c	\
 			$(SRC_DIR)add_watched_files.c	\
 			$(SRC_DIR)run_livereload.c	\
-			$(LIB_DIR)my_str_to_word_array.c
+			$(LIB_DIR)explode.c
 
 OBJ		=	$(SRC:.c=.o)
 

@@ -21,19 +21,19 @@ int parse_options(int argc, char **argv, struct flag_option *flags)
 		if (opt == '?' || opt == 'h')
 			return -1;
 		if (opt == 's') {
-			flags->source_path = my_str_to_word_array(optarg, ",");
+			flags->source_path = explode(optarg, ",");
 			if (!flags->source_path)
 				return -1;
-		} else if (opt == 'b') {
-			flags->binary_name = strdup(optarg);
-			if (!flags->binary_name)
+		} else if (opt == 'e') {
+			flags->exec_command = explode(optarg, " \t");
+			if (!flags->exec_command || !*flags->exec_command)
 				return -1;
 		} else if (opt == 'c') {
-			flags->compile_command = strdup(optarg);
-			if (!flags->compile_command)
+			flags->compile_command = explode(optarg, " \t");
+			if (!flags->compile_command || !*flags->compile_command)
 				return -1;
 		}
 	}
 	return flags->source_path &&
-		flags->binary_name && flags->compile_command ? 0 : -1;
+		flags->exec_command && flags->compile_command ? 0 : -1;
 }

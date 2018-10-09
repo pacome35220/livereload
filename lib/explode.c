@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char **my_str_to_word_array(char *str, const char *delim)
+char **explode(char *str, const char *delim)
 {
 	char **tab = malloc(sizeof(char *));
 
