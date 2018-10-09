@@ -24,7 +24,8 @@ int main(int argc, char **argv)
 	if (parse_options(argc, argv, &flags) == -1)
 		return usage(argv);
 	inotify_fd = inotify_init();
-	assert(inotify_fd != -1);
+	if (inotify_fd == -1)
+		return EXIT_FAILURE;
 	add_watched_files(inotify_fd, flags.source_path);
 	run_livereload(inotify_fd, &flags);
 	return EXIT_SUCCESS;
