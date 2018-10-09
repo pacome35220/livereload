@@ -8,25 +8,12 @@
 
 #define BUF_LEN (10 * (sizeof(struct inotify_event) + NAME_MAX + 1))
 
-static char *my_strrstr(char *haystack, char *needle)
-{
-	if (*needle == '\0')
-		return haystack;
-	for (;;) {
-		haystack = strstr(haystack, needle);
-		if (!haystack)
-			return printf("null\n"), NULL;
-		haystack++;
-	}
-	return haystack;
-}
-
 static void displayInotifyEvent(struct inotify_event *i, struct flag_option *flags)
 {
 	if (i->len > 0 && !strstr(i->name, ".o")) {
 		if (i->mask & IN_CLOSE_WRITE)
 			compile(flags);
-	printf("\n");
+		printf("\n");
 	}
 }
 
