@@ -3,11 +3,11 @@
 #include "flags.h"
 #include "my.h"
 
-const char *optstring = "hc:b:s:";
+const char *optstring = "hc:e:s:";
 const struct option longopts[] = {
 	{"help",		no_argument,		NULL, 'h'},
 	{"compile-command",	required_argument,	NULL, 'c'},
-	{"binary-name",		required_argument,	NULL, 'b'},
+	{"exec-command",	required_argument,	NULL, 'e'},
 	{"source-path",		required_argument,	NULL, 's'},
 	{NULL, 0, 0, '\0'}
 };

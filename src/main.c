@@ -8,7 +8,7 @@
 static void destroy_flags(struct flag_option *flags)
 {
 	free(flags->source_path);
-	free(flags->binary_name);
+	free(flags->exec_command);
 	free(flags->compile_command);
 }
 
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
 	destructor(destroy_flags) struct flag_option flags = {
 		.source_path = NULL,
-		.binary_name = NULL,
+		.exec_command = NULL,
 		.compile_command = NULL
 	};
 	int inotify_fd;

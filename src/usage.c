@@ -7,7 +7,7 @@ const char *help[] = {
 	"-s, --source-path PATH(,PATH2...)	If PATH is a directory,",
 	"					all files inside it will",
 	"					be concerned.",
-	"-b, --binary-name			binary name to execute",
+	"-e, --exec-command			command to execute",
 	"-c, --compile-command			command to compile",
 };
 
