@@ -8,11 +8,11 @@
 
 #define BUF_LEN (10 * (sizeof(struct inotify_event) + NAME_MAX + 1))
 
-static void displayInotifyEvent(struct inotify_event *i, struct flag_option *flags)
+static void displayInotifyEvent(struct inotify_event *i, char **compile_command)
 {
 	if (i->len > 0 && !strstr(i->name, ".o")) {
 		if (i->mask & IN_CLOSE_WRITE)
-			compile(flags);
+			compile(compile_command);
 		printf("\n");
 	}
 }
@@ -28,7 +28,7 @@ void run_livereload(int inotify_fd, struct flag_option *flags)
 		assert(nread > 0);
 		for (char *tmp = buf; tmp < buf + nread; ) {
 			event = (struct inotify_event *) tmp;
-			displayInotifyEvent(event, flags);
+			displayInotifyEvent(event, flags->compile_command);
 			tmp += sizeof(struct inotify_event) + event->len;
 		}
 	}
