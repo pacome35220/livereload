@@ -1,34 +1,44 @@
-#include <assert.h>
 #include <limits.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/inotify.h>
 #include <unistd.h>
-#include "flags.h"
+#include "livereload.h"
 
 #define BUF_LEN (10 * (sizeof(struct inotify_event) + NAME_MAX + 1))
 
-static void displayInotifyEvent(struct inotify_event *i, char **compile_command)
+void full_start_app(struct flag_option *flags)
 {
-	if (i->len > 0 && !strstr(i->name, ".o")) {
-		if (i->mask & IN_CLOSE_WRITE)
-			compile(compile_command);
-		printf("\n");
+	if (compile(flags->compile_command) == EXIT_SUCCESS)
+		if (execute(flags->exec_command) == EXIT_SUCCESS)
+			color_log(GREEN, CLEAN_EXIT);
+		else
+			color_log(RED, CRASH_EXIT);
+	else
+		color_log(RED, CRASH_COMPILE);
+}
+
+static void check_file(struct inotify_event *i, struct flag_option *flags)
+{
+	if (i->len > 0 && i->mask & IN_CLOSE_WRITE && !strstr(i->name, ".o")) {
+		color_log(GREEN, RESTART);
+		full_start_app(flags);
 	}
 }
 
 void run_livereload(int inotify_fd, struct flag_option *flags)
 {
-	char buf[BUF_LEN];
 	ssize_t nread;
+	char buf[BUF_LEN];
 	struct inotify_event *event;
 
 	for (;;) {
 		nread = read(inotify_fd, buf, sizeof(buf));
-		assert(nread > 0);
+		if (nread < 0)
+			continue;
 		for (char *tmp = buf; tmp < buf + nread; ) {
 			event = (struct inotify_event *) tmp;
-			displayInotifyEvent(event, flags->compile_command);
+			check_file(event, flags);
 			tmp += sizeof(struct inotify_event) + event->len;
 		}
 	}

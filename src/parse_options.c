@@ -1,7 +1,6 @@
 #include <getopt.h>
 #include <string.h>
-#include "flags.h"
-#include "my.h"
+#include "livereload.h"
 
 const char *optstring = "hc:e:s:";
 const struct option longopts[] = {

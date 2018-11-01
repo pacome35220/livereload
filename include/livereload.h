@@ -1,12 +1,28 @@
 #pragma once
 
+#include <stdio.h>
 #include "flags.h"
 
-#define ARRAY_SIZE(x)		(sizeof(x) / sizeof((x)[0]))
+#define WATCH_MASK		(IN_CLOSE_WRITE)
+#define DEFAULT			("\e[00m")
+#define RED			("\e[31m")
+#define GREEN			("\e[32m")
+#define YELLOW			("\e[33m")
+#define RESTART			("restarting due to changes...\n")
+#define CLEAN_EXIT		("clean exit - waiting for changes\n")
+#define CRASH_EXIT		("app crashed - waiting for file changes...\n")
+#define CRASH_COMPILE		("compilation failed - can't execute...\n")
+#define BAD_SOURCE		("'%s': No such file or directory\n")
+
+#define color_log(color, str)	(printf("%s[livereload] %s", color, str))
+#define color_reset()		(printf(DEFAULT))
+#define ARRAY_SIZE(arr)		(sizeof(arr) / sizeof((arr)[0]))
 #define destructor(destructor)	__attribute__((cleanup(destructor)))
 
-#define WATCH_MASK		IN_CLOSE_WRITE
-
+char	**explode(char *str, const char *delim);
 int	usage(char **argv);
 void	add_watched_files(int inotify_fd, char **source_path);
 void	run_livereload(int inotify_fd, struct flag_option *flags);
+int	compile(char **compile_command);
+int	execute(char **exec_command);
+void	full_start_app(struct flag_option *flags);

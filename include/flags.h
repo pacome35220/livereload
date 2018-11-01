@@ -7,4 +7,3 @@ struct flag_option {
 };
 
 int parse_options(int argc, char **argv, struct flag_option *flags);
-int compile(char **compile_command);

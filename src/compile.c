@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <wait.h>
-#include "flags.h"
+#include "livereload.h"
 
-void print_compile_log(char **compile_command)
+static void print_compile_log(char **compile_command)
 {
-	printf("Change file are detected !\n");
-	printf("Recompiling with : `");
+	color_log(GREEN, "compiling with : `");
 	for (int i = 0; compile_command[i] != NULL; i++) {
 		if (compile_command[i + 1] != NULL)
 			printf("%s ", compile_command[i]);
@@ -14,6 +13,8 @@ void print_compile_log(char **compile_command)
 			printf("%s", compile_command[i]);
 	}
 	printf("`\n");
+	color_reset();
+	fflush(stdout);
 }
 
 int compile(char **compile_command)
