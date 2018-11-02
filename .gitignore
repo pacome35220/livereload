@@ -9,4 +9,4 @@
 *.out
 vgcore.*
 node_modules
-c_livereload
+livereload

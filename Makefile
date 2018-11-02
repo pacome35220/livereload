@@ -15,16 +15,14 @@ OBJ		=	$(SRC:.c=.o)
 
 CFLAGS		+=	-W -Wall -Wextra	\
 			-I $(INC_DIR)	\
-			-Og	\
-			-g
+			-O3
 
-NAME		=	c_livereload
+NAME		=	livereload
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
 		gcc -o $(NAME) $(OBJ)
-		cp $(NAME) ../lol
 
 clean:
 		@rm -f $(OBJ)
