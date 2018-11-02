@@ -26,7 +26,6 @@ int main(int argc, char **argv)
 		return EXIT_FAILURE;
 	add_watched_files(inotify_fd, flags.source_path);
 	color_log(YELLOW, "Starting livereload\n");
-	color_reset();
 	full_start_app(&flags);
 	run_livereload(inotify_fd, &flags);
 	return EXIT_SUCCESS;

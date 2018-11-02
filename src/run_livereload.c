@@ -16,13 +16,18 @@ void full_start_app(struct flag_option *flags)
 			color_log(RED, CRASH_EXIT);
 	else
 		color_log(RED, CRASH_COMPILE);
+	color_reset();
+	fflush(stdout);
 }
 
 static void check_file(struct inotify_event *i, struct flag_option *flags)
 {
-	if (i->len > 0 && i->mask & IN_CLOSE_WRITE && !strstr(i->name, ".o")) {
-		color_log(GREEN, RESTART);
-		full_start_app(flags);
+	i->name[i->len] = '\0';
+	if (i->mask & IN_CLOSE_WRITE) {
+		if (!strstr(i->name, ".o")) {
+			color_log(GREEN, RESTART);
+			full_start_app(flags);
+		}
 	}
 }
 
