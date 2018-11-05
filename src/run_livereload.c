@@ -1,11 +1,7 @@
-#include <limits.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/inotify.h>
 #include <unistd.h>
 #include "livereload.h"
-
-#define BUF_LEN (10 * (sizeof(struct inotify_event) + NAME_MAX + 1))
 
 void full_start_app(struct flag_option *flags)
 {

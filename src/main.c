@@ -1,6 +1,4 @@
-#include <assert.h>
 #include <stdlib.h>
-#include <sys/inotify.h>
 #include "livereload.h"
 
 static void destroy_flags(struct flag_option *flags)

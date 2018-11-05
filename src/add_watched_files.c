@@ -1,6 +1,3 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <sys/inotify.h>
 #include "livereload.h"
 
 void add_watched_files(int inotify_fd, char **source_path)

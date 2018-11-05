@@ -1,6 +1,8 @@
 #pragma once
 
+#include <limits.h>
 #include <stdio.h>
+#include <sys/inotify.h>
 #include "flags.h"
 
 #define WATCH_MASK		(IN_CLOSE_WRITE)
@@ -13,6 +15,9 @@
 #define CRASH_EXIT		("app crashed - waiting for file changes...\n")
 #define CRASH_COMPILE		("compilation failed - can't execute...\n")
 #define BAD_SOURCE		("'%s': No such file or directory\n")
+#define NB_EVENT		(10)
+#define BUF_LEN			(NB_EVENT * (sizeof(struct inotify_event) + \
+					     NAME_MAX + 1))
 
 #define color_log(color, str)	(printf("%s[livereload] %s", color, str))
 #define color_reset()		(printf(DEFAULT))
