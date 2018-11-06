@@ -27,5 +27,6 @@ int main(int argc, char **argv)
 	color_log(YELLOW, "Starting livereload\n");
 	full_start_app(&flags);
 	run_livereload(inotify_fd, &flags);
+	close(inotify_fd);
 	return EXIT_SUCCESS;
 }
