@@ -2,8 +2,8 @@
 
 struct flag_option {
 	char    **source_path;
-	char    **exec_command;
-	char    **compile_command;
+	char    **execute;
+	char    **compile;
 };
 
 int parse_options(int argc, char **argv, struct flag_option *flags);

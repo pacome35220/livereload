@@ -1,19 +1,20 @@
 #include <stdlib.h>
+#include <unistd.h>
 #include "livereload.h"
 
 static void destroy_flags(struct flag_option *flags)
 {
 	free(flags->source_path);
-	free(flags->exec_command);
-	free(flags->compile_command);
+	free(flags->execute);
+	free(flags->compile);
 }
 
 int main(int argc, char **argv)
 {
 	destructor(destroy_flags) struct flag_option flags = {
 		.source_path = NULL,
-		.exec_command = NULL,
-		.compile_command = NULL
+		.execute = NULL,
+		.compile = NULL
 	};
 	int inotify_fd;
 

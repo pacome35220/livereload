@@ -6,8 +6,8 @@ const char *help[] = {
 	"-s, --source-path PATH(,PATH2...)	If PATH is a directory,",
 	"					all files inside it will",
 	"					be concerned.",
-	"-e, --exec-command			command to execute",
-	"-c, --compile-command			command to compile",
+	"-e, --execute				command to execute",
+	"-c, --compile				command to compile",
 };
 
 int usage(char **argv)
