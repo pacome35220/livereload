@@ -7,7 +7,7 @@ const char *help[] = {
 	"					all files inside it will",
 	"					be concerned.",
 	"-e, --execute				command to execute",
-	"-c, --compile				command to compile",
+	"-c, --compile				command to compile (optional)",
 };
 
 int usage(char **argv)

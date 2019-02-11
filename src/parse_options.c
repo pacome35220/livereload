@@ -33,5 +33,5 @@ int parse_options(int argc, char **argv, struct flag_option *flags)
 				return -1;
 		}
 	}
-	return flags->source_path ? 0 : -1;
+	return flags->source_path && flags->execute ? 0 : -1;
 }
