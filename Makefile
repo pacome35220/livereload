@@ -24,6 +24,8 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 		gcc -o $(NAME) $(OBJ)
 
+install:	re
+		sudo cp $(NAME) /usr/bin/
 clean:
 		@rm -f $(OBJ)
 
@@ -32,4 +34,4 @@ fclean:		clean
 
 re:		fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all install clean fclean re
