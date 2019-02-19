@@ -20,7 +20,7 @@ int parse_options(int argc, char **argv, struct flag_option *flags)
 		if (opt == '?' || opt == 'h')
 			return -1;
 		if (opt == 's') {
-			flags->source_path = explode(optarg, ",");
+			flags->source_path = explode(optarg, ",: ");
 			if (!flags->source_path)
 				return -1;
 		} else if (opt == 'e') {
