@@ -22,15 +22,17 @@ NAME		=	livereload
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		gcc -o $(NAME) $(OBJ)
+		$(CC) -o $(NAME) $(OBJ)
 
 install:	re
 		sudo cp $(NAME) /usr/bin/
+		@make fclean --no-print-directory
+
 clean:
-		@rm -f $(OBJ)
+		@$(RM) $(OBJ)
 
 fclean:		clean
-		@rm -f $(NAME)
+		@$(RM) $(NAME)
 
 re:		fclean all
 
