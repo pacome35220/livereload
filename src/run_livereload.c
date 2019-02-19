@@ -5,8 +5,8 @@
 
 void full_start_app(struct flag_option *flags)
 {
-	if (!flags->compile || compile(flags->compile) == EXIT_SUCCESS)
-		if (execute(flags->execute) == EXIT_SUCCESS)
+	if (!flags->compile || !exec_command(flags->compile, print_compile_log))
+		if (!exec_command(flags->execute, print_exec_log))
 			color_log(GREEN, CLEAN_EXIT);
 		else
 			color_log(RED, CRASH_EXIT);

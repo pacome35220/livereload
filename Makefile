@@ -8,8 +8,7 @@ SRC		=	$(SRC_DIR)main.c	\
 			$(SRC_DIR)parse_options.c	\
 			$(SRC_DIR)add_watched_files.c	\
 			$(SRC_DIR)run_livereload.c	\
-			$(SRC_DIR)compile.c	\
-			$(SRC_DIR)execute.c
+			$(SRC_DIR)exec_command.c
 
 OBJ		=	$(SRC:.c=.o)
 

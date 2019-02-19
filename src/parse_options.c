@@ -24,11 +24,11 @@ int parse_options(int argc, char **argv, struct flag_option *flags)
 			if (!flags->source_path)
 				return -1;
 		} else if (opt == 'e') {
-			flags->execute = explode(optarg, " \t");
+			flags->execute = strdup(optarg);
 			if (!flags->execute || !*flags->execute)
 				return -1;
 		} else if (opt == 'c') {
-			flags->compile = explode(optarg, " \t");
+			flags->compile = strdup(optarg);
 			if (!flags->compile || !*flags->compile)
 				return -1;
 		}
