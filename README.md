@@ -1,6 +1,6 @@
 # livereload
 
-livereload is a tool that helps C/C++ developpement by automatically compile and run program when file changes detected.
+livereload is a tool that helps developers by automatically compile and run a program when file changes are detected.
 
 ### Based on inotify
 
