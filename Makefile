@@ -24,7 +24,7 @@ $(NAME):	$(OBJ)
 		$(CC) -o $(NAME) $(OBJ)
 
 install:	re
-		sudo cp $(NAME) /usr/bin/
+		sudo cp $(NAME) /usr/local/bin/
 		@make fclean --no-print-directory
 
 clean:
